@@ -1,0 +1,18 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstName TEXT NOT NULL,
+  lastName TEXT NOT NULL
+);
+
+INSERT INTO users (firstName, lastName)
+VALUES ('Danil', 'Yametov');
+
+selectAll:
+SELECT *
+FROM users;
+
+insert:
+INSERT INTO users(firstName, lastName)
+VALUES (?, ?);
+
+
