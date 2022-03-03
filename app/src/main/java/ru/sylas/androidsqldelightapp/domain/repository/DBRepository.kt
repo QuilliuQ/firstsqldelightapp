@@ -1,9 +1,9 @@
 package ru.sylas.androidsqldelightapp.domain.repository
 
-import ru.sylas.androidsqldelightapp.domain.model.FullName
+import ru.sylas.androidsqldelightapp.sqldelight.database.Users
 
 interface DBRepository {
-    fun getFromDB(): List<FullName>
+    fun getFromDB(): List<Users>
 
-    fun saveInDB(fullName:FullName):Boolean
+    fun saveInDB(user:Users):Boolean
 }

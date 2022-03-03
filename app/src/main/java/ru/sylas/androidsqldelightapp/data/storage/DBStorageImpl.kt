@@ -2,23 +2,20 @@ package ru.sylas.androidsqldelightapp.data.storage
 
 import com.squareup.sqldelight.db.SqlDriver
 import ru.sylas.androidsqldelightapp.Database
-import ru.sylas.androidsqldelightapp.domain.model.FullName
-import ru.sylas.androidsqldelightapp.domain.model.toFullName
+import ru.sylas.androidsqldelightapp.sqldelight.database.Users
 import java.lang.Exception
 
 class DBStorageImpl(private val sqlDriver: SqlDriver):DBStorage {
     private val db = Database(sqlDriver)
-    override fun getFromDB(): List<FullName> {
-       return db.myDatabaseQueries.selectAll().executeAsList().map { user->
-            user.toFullName()
-       }
+    override fun getFromDB(): List<Users> {
+       return db.myDatabaseQueries.selectAll().executeAsList()
     }
 
-    override fun saveInDB(fullName: FullName): Boolean {
+    override fun saveInDB(user: Users): Boolean {
         return try {
             db.myDatabaseQueries.insert(
-                firstName = fullName.firstName,
-                lastName = fullName.lastName
+                firstName = user.firstName,
+                lastName = user.lastName
             )
             true
         }
